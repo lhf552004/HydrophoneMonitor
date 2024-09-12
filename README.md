@@ -11,5 +11,5 @@ This is simulation project, using Qt and C++ project. It uses qmake to generate 
 
 Open project with Qt Creator, run the project
 
-[Main page](./docs/plot.png)
+![Main page](./docs/plot.png)
 
