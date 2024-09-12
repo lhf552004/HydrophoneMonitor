@@ -103,7 +103,7 @@ void MainWindow::on_actionReset_triggered()
 
     // Clear all data (if needed)
     customPlot->graph(0)->data()->clear();
-
+    customPlot->graph(1)->data()->clear();
     // Replot to apply changes
     customPlot->replot();
 
@@ -134,6 +134,11 @@ void MainWindow::updatePlot(double spl, double frequency, QString timestamp) {
 
     // Replot to update the graph with the new data
     customPlot->replot();
+
+    if (isLogging && logFile.isOpen()) {
+        QTextStream out(&logFile);
+        out << timestamp << "," << spl << "," << frequency << "\n";
+    }
 }
 
 void MainWindow::on_actionLog_triggered()
