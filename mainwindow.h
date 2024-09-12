@@ -37,11 +37,14 @@ private slots:
 
     void updatePlot(double spl, double frequency, QString timestamp);
 
+    void on_actionLog_triggered();
+
 private:
     Ui::MainWindow *ui;
     DataGenerator *dataGenerator;  // Pointer to DataGenerator object
     QCustomPlot *customPlot;
     QFile logFile;
     bool isLogging = false;
+    QVector<double> splValues, frequencyValues;
 };
 #endif // MAINWINDOW_H

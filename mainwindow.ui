@@ -61,8 +61,7 @@
    <addaction name="actionOpen"/>
    <addaction name="actionStart"/>
    <addaction name="actionPause"/>
-   <addaction name="actionUpdatePlot"/>
-   <addaction name="actionUpdate_Analysis"/>
+   <addaction name="actionLog"/>
    <addaction name="actionReset"/>
   </widget>
   <action name="actionOpen">
@@ -100,14 +99,9 @@
     <string>Save</string>
    </property>
   </action>
-  <action name="actionUpdatePlot">
+  <action name="actionLog">
    <property name="text">
-    <string>Update Plot</string>
-   </property>
-  </action>
-  <action name="actionUpdate_Analysis">
-   <property name="text">
-    <string>Update Analysis</string>
+    <string>Log</string>
    </property>
   </action>
  </widget>
