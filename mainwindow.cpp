@@ -37,6 +37,8 @@ MainWindow::MainWindow(QWidget *parent)
     // Connect signals from DataGenerator to slots in MainWindow
     connect(dataGenerator, &DataGenerator::newData, this, &MainWindow::updatePlot);
 
+    statusBar()->showMessage("Application started. Ready to receive data.");
+
 }
 
 MainWindow::~MainWindow()
@@ -76,12 +78,14 @@ void MainWindow::on_actionAbout_triggered()
 void MainWindow::on_actionStart_triggered()
 {
     dataGenerator->start();  // Start the data generation thread
+    statusBar()->showMessage("Plot is running");
 }
 
 
 void MainWindow::on_actionPause_triggered()
 {
     dataGenerator->stop();  // Stop the data generation thread
+    statusBar()->showMessage("Plot is stopped");
 }
 
 
@@ -90,20 +94,30 @@ void MainWindow::on_actionReset_triggered()
     // Remove all graphs
     customPlot->clearGraphs();
 
-    // Recreate the graph for SPL
+    // Recreate the graph for SPL (Graph 0)
     customPlot->addGraph();
     customPlot->graph(0)->setName("SPL (dB)");
     customPlot->graph(0)->setPen(QPen(Qt::blue));  // Set the color for the SPL graph
 
+    // Recreate the graph for Frequency (Graph 1)
+    customPlot->addGraph();
+    customPlot->graph(1)->setName("Frequency (Hz)");
+    customPlot->graph(1)->setPen(QPen(Qt::red));  // Set the color for the Frequency graph
+
     // Reset axis labels and ranges
     customPlot->xAxis->setLabel("Time");
     customPlot->yAxis->setLabel("SPL (dB)");
+    customPlot->yAxis2->setLabel("Frequency (Hz)");
+    customPlot->yAxis2->setVisible(true);  // Make sure the right y-axis is visible
+
     customPlot->xAxis->setRange(0, 10);  // Reset range for x-axis
-    customPlot->yAxis->setRange(60, 120);  // Reset range for y-axis (SPL range)
+    customPlot->yAxis->setRange(0, 120);  // Reset range for y-axis (SPL range)
+    customPlot->yAxis2->setRange(0, 20000);  // Reset range for right y-axis (Frequency range)
 
     // Clear all data (if needed)
     customPlot->graph(0)->data()->clear();
     customPlot->graph(1)->data()->clear();
+
     // Replot to apply changes
     customPlot->replot();
 
