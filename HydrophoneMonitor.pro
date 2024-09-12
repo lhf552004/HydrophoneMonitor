@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui printsupport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -19,6 +19,10 @@ HEADERS += \
 
 FORMS += \
     mainwindow.ui
+
+INCLUDEPATH += $$PWD/libs/qcustomplot
+SOURCES += $$PWD/libs/qcustomplot/qcustomplot.cpp
+HEADERS += $$PWD/libs/qcustomplot/qcustomplot.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

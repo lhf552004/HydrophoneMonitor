@@ -4,6 +4,7 @@
 #include <QFile>
 #include <QMainWindow>
 #include "datagenerator.h"
+#include "qcustomplot.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -32,13 +33,14 @@ private slots:
 
     void on_actionReset_triggered();
 
-    void on_actionLog_Data_triggered();
-
     void on_actionUpdatePlot_triggered();
+
+    void updatePlot(double spl, double frequency, QString timestamp);
 
 private:
     Ui::MainWindow *ui;
     DataGenerator *dataGenerator;  // Pointer to DataGenerator object
+    QCustomPlot *customPlot;
     QFile logFile;
     bool isLogging = false;
 };
