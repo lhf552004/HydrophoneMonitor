@@ -1,6 +1,8 @@
 ## Hydrophone Monitor
 
-This is simulation project, using Qt and C++ project. It uses qmake to generate make file
+This is simulation project, using Qt and C++ project. It uses qmake to generate make file.
+
+It is time serie plot.
 
 ## Install
 
